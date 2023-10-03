@@ -1,53 +1,47 @@
-const weight = document.getElementById('weight').value;
-const height = document.getElementById('height').value;
-
-
-function HeightCalculate (height) {
-    const hasil = height / 100;
-    return Math.pow(hasil, 2);
+function heightCalculate(height) {
+  const hasil = height / 100;
+  return Math.pow(hasil, 2);
 }
 
-function Calculate(weight, height) {
-    return weight / height;
+function calculateBMI(weight, height) {
+  return weight / heightCalculate(height);
 }
 
+// function bmiCategory(value) {
+//   const category = {
+//     Underweight: value < 18.5,
+//     "Normal Weight": value >= 18.5 && value <= 24.9,
+//     Overweight: value >= 25 && value <= 29.9,
+//     Obesity: value >= 30,
+//   };
 
-function Condition (obj) {
-    const Category = {
-        'Underweight': obj < 18.5,
-        'Normal Weight': obj >= 18.5 && obj <= 24.9,
-        'Overweight': obj >= 25 && obj <= 29.9,
-        'Obesity': obj >= 30
-    };
+//   for (var bmi in category) {
+//     if (category[bmi]) {
+//       return bmi;
+//     }
+//   }
 
-    for (var BMI in Category) {
-        if (Category[BMI]) {
-          return BMI;
-        }
-      }
-    
-      return "Tidak valid";
+//   return "Tidak valid";
+// }
+
+function bmiCategory2(value) {
+  if (value < 18.5) return "Underweight";
+  if (value >= 18.5 && value <= 24.9) return "Normal Weight";
+  if (value >= 25 && value <= 29.9) return "Overweight";
+  return "Obesity";
 }
 
 function submit() {
+  const weight = parseFloat(document.getElementById("weight").value);
+  const height = parseFloat(document.getElementById("height").value);
 
-    const weight = parseFloat(document.getElementById('weight').value);
-    const height = parseFloat(document.getElementById('height').value);
+  const bmi = calculateBMI(weight, height);
+  const category = bmiCategory2(bmi);
 
-    const calc = HeightCalculate(height)
-    const BMI = Calculate(weight, calc);
-    const Category = Condition(BMI);
-
-    document.getElementById('results').innerHTML = `Your BMI is: <strong>${BMI.toFixed(1)}</strong> Which means You are <strong>${Category}</strong>`;
-
-    
-    event.preventDefault();
-    
+  document.getElementById( "results").innerHTML = `Your BMI is: <strong>${bmi.toFixed(1)}</strong> Which means You are <strong>${category}</strong>`;
 }
 
-document.getElementById('forms').addEventListener("submit", event=>{
-    event.preventDefault();
-    submit();
+document.getElementById("forms").addEventListener("submit", (event) => {
+  event.preventDefault();
+  submit();
 });
-console.log(weight);
-console.log(height);
