@@ -4,14 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BMI Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 </head>
 <body>
-    <form id="forms">
-        <input type="number" name="weight" id="weight" placeholder="Weight"  required>
-        <input type="number" name="height" id="height" placeholder="Height"  required>
-        <button id="submit" type="submit">Kirim Brok</button>
-        <p id="results"></p>
-    </form>
+    <div class="container">
+        <div class="wrapper-content">
+            <h1>Check Your BMI</h1>
+            <p>Enter your Weight and Height below to check your BMI Result!!</p>
+            <form id="forms">
+                <div class="titles">Enter your Weight (Kg)</div>
+                <input type="number" name="weight" id="weight" placeholder="Weight"  required>
+                <div class="titles">Enter your Height (Cm)</div>
+                <input type="number" name="height" id="height" placeholder="Height"  required>
+                <button id="submit" type="submit">Calculate!</button>
+            </form>
+            <p id="results"></p>
+        </div>
+    </div>
 <script src="script.js"></script>
 </body>
 </html>
